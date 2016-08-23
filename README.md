@@ -14,14 +14,14 @@ From your shell, you can run `ControlPanel` and then navigate to the "Security T
 
 Then build the web applicaton by running:
 
-   mvn clean install
+    mvn clean install
    
 ## Testing
 
 Change to the web application directory and start Jetty:
 
-   cd webapp
-   mvn jetty:run-war
+    cd webapp
+    mvn jetty:run-war
    
 You can now navigate to http://localhost:8080 and click the Start link.
 
