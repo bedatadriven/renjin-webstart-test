@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <artifactId>renjin-webstart-test</artifactId>
+    <groupId>org.renjin</groupId>
+    <version>1.0-SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>renjin-webstart-webapp</artifactId>
+  <packaging>war</packaging>
+  
+  <dependencies>
+    <dependency>
+      <groupId>org.codehaus.mojo</groupId>
+      <artifactId>webstart-jnlp-servlet</artifactId>
+      <version>1.0-beta-7</version>
+      <scope>runtime</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>dependency-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <!-- 
+              Copy the webstart bundle in as a resource
+              before packaging starts.
+            -->
+            <phase>process-resources</phase>
+            <goals>
+              <goal>unpack</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <artifactItems>
+            <artifactItem>
+              <groupId>org.renjin</groupId>
+              <artifactId>renjin-webstart-app</artifactId>
+              <version>${project.version}</version>
+              <type>zip</type>
+            </artifactItem>
+          </artifactItems>
+          <outputDirectory>${project.build.directory}/${project.build.finalName}/webstart</outputDirectory>
+        </configuration>
+      </plugin>
+
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>webstart-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>jnlp-download-servlet</goal>
+            </goals>
+          </execution>
+        </executions>
+
+        <configuration>
+
+          <jnlpFiles>
+            <jnlpFile>
+              <templateFilename>clientTemplate.vm</templateFilename>
+              <jarResources>
+                <jarResource>
+                  <groupId>org.renjin</groupId>
+                  <artifactId>renjin-webstart-app</artifactId>
+                  <version>${project.version}</version>
+                  <mainClass>org.renjin.webstart.app.Main</mainClass>
+                </jarResource>
+              </jarResources>
+            </jnlpFile>
+          </jnlpFiles>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.eclipse.jetty</groupId>
+        <artifactId>jetty-maven-plugin</artifactId>
+        <version>9.4.0.M1</version>
+      </plugin>
+      
+    </plugins>
+    
+  </build>
+  
+</project>

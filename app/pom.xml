@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <artifactId>renjin-webstart-test</artifactId>
+    <groupId>org.renjin</groupId>
+    <version>1.0-SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>renjin-webstart-app</artifactId>
+  
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo.webstart</groupId>
+        <artifactId>webstart-maven-plugin</artifactId>
+        <version>1.0-beta-2</version>
+
+        <executions>
+          <execution>
+            <id>package</id>
+            <phase>package</phase>
+            <goals>
+              <goal>jnlp-inline</goal>
+            </goals>
+          </execution>
+        </executions>
+
+        <configuration>
+          <jnlp>
+            <outputFile>launch.jnlp</outputFile>
+            <mainClass>org.renjin.webstart.app.Main</mainClass>
+          </jnlp>
+
+          <libPath>lib</libPath>
+
+          <sign>
+            <keystore>Test-KeyStore</keystore>
+            <keypass>YourPassword</keypass>
+            <storepass>YourPassword</storepass>
+            <alias>SwingWebstartMavenExample</alias>
+            <validity>3650</validity>
+
+            <dnameCn>BeDataDriven</dnameCn>
+            <dnameOu>Organizational Unit</dnameOu>
+            <dnameO>BeDataDriven</dnameO>
+            <dnameL>The Hague</dnameL>
+            <dnameSt>Zuid Holland</dnameSt>
+            <dnameC>NL</dnameC>
+
+            <verify>true</verify>
+            <keystoreConfig>
+              <delete>true</delete>
+              <gen>true</gen>
+            </keystoreConfig>
+          </sign>
+
+          <pack200>false</pack200>
+          <gzip>true</gzip>
+          <outputJarVersions>false</outputJarVersions>
+          <verbose>true</verbose>
+
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+
+</project>
