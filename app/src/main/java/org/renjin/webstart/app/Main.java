@@ -82,7 +82,6 @@ public class Main extends JPanel implements ActionListener {
     //Display the window.
     frame.pack();
     frame.setSize(600, 300);
-    frame.setLocationRelativeTo(null);
     frame.setVisible(true);
   }
 

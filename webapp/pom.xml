@@ -80,6 +80,37 @@
               </jarResources>
             </jnlpFile>
           </jnlpFiles>
+
+
+          <sign>
+            <keystore>${project.build.directory}/keyStore</keystore>
+            <keypass>password</keypass>
+            <storepass>password</storepass>
+            <alias>webstart</alias>
+
+            <storetype>jks</storetype>
+            <validity>365</validity>
+            <dnameCn>Renjin Webstart</dnameCn>
+            <dnameOu>Renjin</dnameOu>
+            <dnameO>BeDataDriven</dnameO>
+            <dnameL>The Hague</dnameL>
+            <dnameSt>Zuid Holland</dnameSt>
+            <dnameC>NL</dnameC>
+
+            <!-- KEYSTORE MANGEMENT -->
+            <keystoreConfig>
+              <delete>true</delete>
+              <!-- delete the keystore at build time -->
+              <gen>true</gen>
+              <!-- generate keystore and key at build time -->
+            </keystoreConfig>
+
+            <verify>false</verify>
+            <!-- verify the signature after signing -->
+          </sign>
+          <unsign>true</unsign>
+          <!-- unsign already signed packages and sign them with own key -->
+
         </configuration>
       </plugin>
 

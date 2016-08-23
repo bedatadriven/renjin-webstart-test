@@ -44,33 +44,6 @@
           </jnlp>
 
           <libPath>lib</libPath>
-
-          <sign>
-            <keystore>Test-KeyStore</keystore>
-            <keypass>YourPassword</keypass>
-            <storepass>YourPassword</storepass>
-            <alias>SwingWebstartMavenExample</alias>
-            <validity>3650</validity>
-
-            <dnameCn>BeDataDriven</dnameCn>
-            <dnameOu>Organizational Unit</dnameOu>
-            <dnameO>BeDataDriven</dnameO>
-            <dnameL>The Hague</dnameL>
-            <dnameSt>Zuid Holland</dnameSt>
-            <dnameC>NL</dnameC>
-
-            <verify>true</verify>
-            <keystoreConfig>
-              <delete>true</delete>
-              <gen>true</gen>
-            </keystoreConfig>
-          </sign>
-
-          <pack200>false</pack200>
-          <gzip>true</gzip>
-          <outputJarVersions>false</outputJarVersions>
-          <verbose>true</verbose>
-
         </configuration>
       </plugin>
     </plugins>

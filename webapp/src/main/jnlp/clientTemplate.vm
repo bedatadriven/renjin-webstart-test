@@ -12,7 +12,7 @@
         <offline-allowed/>
     </information>
     <security>
-##        <all-permissions/>
+        <all-permissions/>
     </security>
     <resources>
         <j2se version="1.7+" /> <!-- define required Java runtime version -->
